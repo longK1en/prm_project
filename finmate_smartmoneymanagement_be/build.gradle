@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '4.0.3'
+    id 'org.springframework.boot' version '4.0.2'
     id 'io.spring.dependency-management' version '1.1.7'
 }
 
@@ -20,24 +20,36 @@ configurations {
     }
 }
 
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-security-oauth2-client'
     implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation 'com.cloudinary:cloudinary-http44:1.39.0'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.0'
+    implementation 'org.apache.commons:commons-csv:1.10.0'
+    implementation 'org.apache.poi:poi-ooxml:5.2.5'
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    // Reads .env file automatically — no need to set env vars manually in IDE
+    implementation 'me.paulschwarz:spring-dotenv:4.0.0'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
     compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'org.postgresql:postgresql'
+    runtimeOnly 'com.mysql:mysql-connector-j'
     annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.boot:spring-boot-starter-security-oauth2-client-test'
-    testImplementation 'org.springframework.boot:spring-boot-starter-security-test'
     testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testRuntimeOnly 'com.h2database:h2'
+    implementation 'com.mysql:mysql-connector-j'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
 }
 
 tasks.named('test') {
